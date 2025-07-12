@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ .Title }}</title>
+    </head>
+
+    <body>
+        {{template "views/partials/header" .}}
+        <h1>{{ .Title }}</h1>
+        <p>{{ unescape .Title}}</p>
+        <p>Welcome to the Fiber web application!</p>
+        <p>This is a simple example of rendering a template with Go Fiber.</p>
+        {{template "views/partials/footer" .}}
+    </body>
+
+</html>
