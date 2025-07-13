@@ -8,12 +8,12 @@
     </head>
 
     <body>
-        {{template "views/partials/header" .}}
+        {{template "partials/header" .}}
+        <!-- {{block "content" .}}{{end}} -->
         <h1>{{ .Title }}</h1>
-        <p>{{ unescape .Title}}</p>
         <p>Welcome to the Fiber web application!</p>
         <p>This is a simple example of rendering a template with Go Fiber.</p>
-        {{template "views/partials/footer" .}}
+        {{template "partials/footer" .}}
     </body>
 
 </html>

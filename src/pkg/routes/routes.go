@@ -10,24 +10,28 @@ func Setup(app *fiber.App) {
 	// Initialize routes for the application
 	// This function sets up the routes for the Fiber application
 	// Define the base route
-	
 	app.Get("/", func(c *fiber.Ctx) error {
-		return c.Render("index", fiber.Map{
-			"Title": "Welcome to Fiber",
+			// Render index
+			return c.Render("index", fiber.Map{
+				"Title": "Hello, World!",
+				"content": "/",
+			})
 		})
-	})
 
+	// Define a route for rendering the index template with a layout
 	app.Get("/layout", func(c *fiber.Ctx) error {
-		// Render index within layouts/main
-		return c.Render("index", fiber.Map{
-			"Title": "Hello, World!",
-		}, "layouts/main")
-	})
+			// Render index within layouts/main
+			return c.Render("index", fiber.Map{
+				"Title": "Hello, World!",
+				"content": "/layout",
+			}, "layouts/main")
+		})
 
 	app.Get("/layouts-nested", func(c *fiber.Ctx) error {
 		// Render index within layouts/nested/main within layouts/nested/base
 		return c.Render("index", fiber.Map{
 			"Title": "Hello, World!",
+			"content": "/layouts-nested",
 		}, "layouts/nested/main", "layouts/nested/base")
 	})
 	
