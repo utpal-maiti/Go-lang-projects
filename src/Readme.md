@@ -21,3 +21,5 @@ go vet
 golint
 
 staticcheck
+
+APP_ENV=production go run main.go

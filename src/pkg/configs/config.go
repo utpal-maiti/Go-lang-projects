@@ -3,6 +3,7 @@ package configs
 import (
 	"log"
 	"my-fiber-app/mod/pkg/utils"
+	"os"
 
 	"github.com/joho/godotenv"
 )
@@ -12,10 +13,23 @@ func Init() {
 	// Load environment variables from .env file
 	// This is useful for local development
 	// In production, you might want to set these variables directly in the environment
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
+
+	env := os.Getenv("APP_ENV")
+	if env == "" {
+		env = "development" // default
 	}
+	// Load the appropriate .env file based on the environment
+
+	err := godotenv.Load(".env") // base
+	if err != nil {
+		log.Fatalf("Error loading .env file: %v", err)
+	}
+	// Load the environment variables from the specified file
+	err = godotenv.Overload(".env." + env) // override
+	if err != nil {
+		log.Fatalf("Error loading .env.%s file: %v", env, err)
+	}
+
 	log.Println("Configuration initialized")
 }
 
