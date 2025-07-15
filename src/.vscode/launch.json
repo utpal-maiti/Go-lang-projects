@@ -58,6 +58,20 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
+            "package": "${fileDirname}",
+            "args": [],
+            "env": {},
+            "cwd": "${workspaceFolder}",
+            "showLog": true,
+            "output": "debug",
+            "trace": "verbose",
+            // "preLaunchTask": "go build ../..",
+            // "postDebugTask": "go clean",
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env",
+            "outputCapture": "debug",
+            "debugAdapter": "dlv-dap",
+            "dlvToolPath": "${workspaceFolder}/bin/dlv",
             "program": "${workspaceFolder}"
         }
     ]
