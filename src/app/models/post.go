@@ -1,6 +1,6 @@
 package models
 
-// Define the Post struct
+// Post represents a blog post with an ID, title, and body.
 type Post struct {
 	ID    int    `json:"id"`
 	Title string `json:"title"`

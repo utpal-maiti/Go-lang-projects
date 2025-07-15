@@ -7,6 +7,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
+// GetPosts returns a list of all posts as JSON.
 func GetPosts(c *fiber.Ctx) error {
     // Logic to get posts
     posts := []models.Post{
@@ -16,7 +17,7 @@ func GetPosts(c *fiber.Ctx) error {
     return c.JSON(posts)
 }
 
-// Handler to get a single post by ID
+// GetPostByID returns a single post by its ID as JSON.
 func GetPostByID(c *fiber.Ctx) error {
 	id := c.Params("id")
 	// TODO: Add logic to fetch post by id from database or data source
@@ -27,6 +28,7 @@ func GetPostByID(c *fiber.Ctx) error {
 	})
 }
 
+// CreatePost creates a new post from the request body and returns it as JSON.
 func CreatePost(c *fiber.Ctx) error {
     // Logic to create a post
     var post models.Post
@@ -35,6 +37,8 @@ func CreatePost(c *fiber.Ctx) error {
     }
     return c.JSON(post)
 }
+
+// UpdatePost updates an existing post by its ID and returns the updated post as JSON.
 func UpdatePost(c *fiber.Ctx) error {
     id := c.Params("id")
     var post models.Post
@@ -49,6 +53,8 @@ func UpdatePost(c *fiber.Ctx) error {
     post.ID = intID // Assign converted int ID
     return c.JSON(post)
 }   
+
+// DeletePost deletes a post by its ID and returns a confirmation message as JSON.
 func DeletePost(c *fiber.Ctx) error {
     id := c.Params("id")
     // Logic to delete a post

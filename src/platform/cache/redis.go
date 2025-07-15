@@ -10,6 +10,7 @@ var (
 	rdb  *redis.Client
 )
 
+// InitRedis initializes the Redis client using environment variables.
 func InitRedis() {
 	rdb = redis.NewClient(&redis.Options{
 		Addr:     utils.GetEnv("REDIS_ADDR"),
@@ -17,9 +18,11 @@ func InitRedis() {
 		DB:       0,
 	})
 }
+
+// GetRedisClient returns the Redis client instance, initializing it if necessary.
 func GetRedisClient() *redis.Client {
 	if rdb == nil {
 		InitRedis()
 	}
 	return rdb
-}	
+}

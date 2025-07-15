@@ -2,6 +2,8 @@ package main
 
 import (
 	"embed"
+	"fmt"
+	"log"
 	"my-fiber-app/mod/pkg/configs"
 	"my-fiber-app/mod/pkg/routes"
 	"net/http"
@@ -42,9 +44,11 @@ func main() {
 
     // Use logger middleware
     app.Use(logger.New())
-
+    
     routes.Setup(app)
-
+    
+    log.Println("Server is running...")
+    fmt.Println("Starting server on port:", configs.AppPort())
     app.Listen(":"+configs.AppPort()) // Start the server on the configured port
     // Additional setup can be done here
     // For example, setting up middleware, error handling, etc.

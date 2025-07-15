@@ -6,6 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
+// Setup initializes all routes for the Fiber application.
 func Setup(app *fiber.App) {
 	// Initialize routes for the application
 	// This function sets up the routes for the Fiber application
