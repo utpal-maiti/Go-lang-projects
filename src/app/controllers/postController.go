@@ -1,6 +1,9 @@
 package controllers
 
 import (
+	"bytes"
+	"fmt"
+	"io"
 	"my-fiber-app/mod/app/models"
 	"strconv"
 
@@ -18,6 +21,21 @@ func GetPosts(c *fiber.Ctx) error {
     }
     return c.JSON(posts)
 }
+
+func DownloadFile(c *fiber.Ctx) error {
+    data := []byte("some content")
+    reader := bytes.NewReader(data)
+    filename := "sample.txt"
+    c.Set("Content-Type", "text/plain")
+    c.Set("Content-Disposition", fmt.Sprintf(`attachment; filename="%s"`, filename))
+    c.Set("filename", filename)
+    _, err := io.Copy(c, reader)
+      if err != nil {
+        return c.Status(fiber.StatusInternalServerError).SendString("Error streaming file")
+    }
+ return nil
+}
+
 
 // GetPostByID returns a single post by its ID as JSON.
 func GetPostByID(c *fiber.Ctx) error {

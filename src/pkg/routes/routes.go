@@ -57,5 +57,6 @@ func Setup(app *fiber.App) {
 	app.Put("/api/v1/posts/:id", controllers.UpdatePost)
 	// Define route for deleting a post by ID
 	app.Delete("/api/v1/posts/:id", controllers.DeletePost)
+	app.Get("/download", controllers.DownloadFile)
 
 }

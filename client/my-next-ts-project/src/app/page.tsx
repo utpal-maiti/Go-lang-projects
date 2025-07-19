@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import styles from './page.module.css';
 import { useEffect, useState } from 'react';
+import DownloadButton from '../components/DownloadButton';
 
 export default function Home() {
 	const [status, setStatus] = useState('');
@@ -12,5 +13,10 @@ export default function Home() {
 			.then((data) => setStatus(data.status));
 	}, []);
 
-	return <h1>Status from Go API: {status}</h1>;
+	return (
+		<>
+			<h1> Status from Go API: {status}</h1>
+			<DownloadButton></DownloadButton>
+		</>
+	);
 }
