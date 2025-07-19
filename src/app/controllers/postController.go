@@ -9,6 +9,8 @@ import (
 
 // GetPosts returns a list of all posts as JSON.
 func GetPosts(c *fiber.Ctx) error {
+        // c.Set("Access-Control-Allow-Origin", "*")
+
     // Logic to get posts
     posts := []models.Post{
         {ID: 1, Title: "First Post", Body: "This is the content of the first post."},

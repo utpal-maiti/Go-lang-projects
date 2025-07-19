@@ -9,6 +9,7 @@ import (
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/template/html/v2"
 )
@@ -44,6 +45,12 @@ func main() {
 
     // Use logger middleware
     app.Use(logger.New())
+
+    app.Use(cors.New(cors.Config{
+    AllowOrigins: "*", // or "https://example.com"
+    AllowHeaders: "Origin, Content-Type, Accept",
+        }))
+
     
     routes.Setup(app)
     
