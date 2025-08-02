@@ -9,8 +9,19 @@ export default function Home() {
 
 	useEffect(() => {
 		fetch('http://localhost:8080/api/v1/posts')
-			.then((res) => res.json())
-			.then((data) => setStatus(data.status));
+			.then((res) => {
+
+				for (const [key, value] of res.headers.entries()) {
+        			console.log(`${key}: ${value}`);	
+				}
+				return res.json()
+				return res;
+
+			})
+			.then((data) => {
+				console.log(data)
+				setStatus(data.status)
+			});
 	}, []);
 
 	return (

@@ -2,12 +2,18 @@
 export async function downloadFile(url: string, fileName: string) {
     const response = await fetch(url);
 
-
     console.log(response);
     // Print all headers
-    for (let [key, value] of response.headers.entries()) {
+    for (const [key, value] of response.headers.entries()) {
         console.log(`${key}: ${value}`);
     }
+       // Print all headers
+
+   
+    for (const key in response) {
+    console.log(`${key}: ${await response}`);
+    }
+
 
     if (!response.ok) {
         throw new Error(`Download failed with status ${response.status}`);
